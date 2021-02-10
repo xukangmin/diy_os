@@ -51,8 +51,8 @@ printstr:                  ;显示指定的字符串, 以'$'为结束标记
       mov al,[si]
       cmp al,'$'
       je disover
-      mov ah,0eh
-      int 10h
+      mov ah,0eh      ; bios call referece https://www.wikiwand.com/en/BIOS_interrupt_call
+      int 10h         ; bios call
       inc si
       jmp printstr
 disover:
@@ -61,7 +61,7 @@ disover:
 newline:                     ;显示回车换行
       mov ah,0eh
       mov al,0dh
-      int 10h
+      int 10h               ; bios call 
       mov al,0ah
       int 10h
       ret
